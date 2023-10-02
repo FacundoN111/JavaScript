@@ -22,6 +22,7 @@ const divListaIngresados = document.querySelector('#listaIngresados')
 const seccionProductos = document.querySelector('#seccionProductos')
 const seccionLocal = document.querySelector('#seccionLocal')
 const seccionIngresado = document.querySelector('#seccionIngresado')
+const button = document.querySelector('#button')
  
 
 // Creando constante de stock con JSON para los datos guardados o el array vacio en caso contrario
@@ -97,18 +98,18 @@ function mostrarProductos() {
     let listaProductosHtml = '<ul>'
 
     for (const producto of stock) {
-      listaProductosHtml += `<li><a onclick="hacerAlgoConProductos('${producto.producto1}')">${producto.producto1}</a></li>`
+      listaProductosHtml += `<li><a>${producto.producto1}</a></li>`
     }
     for (const producto of stock) {
-      listaProductosHtml += `<li><a onclick="hacerAlgoConProductos('${producto.producto2}')">${producto.producto2}</a></li>`
-    }
-
-    for (const producto of stock) {
-      listaProductosHtml += `<li><a onclick="hacerAlgoConProductos('${producto.producto3}')">${producto.producto3}</a></li>`
+      listaProductosHtml += `<li><a>${producto.producto2}</a></li>`
     }
 
     for (const producto of stock) {
-      listaProductosHtml += `<li><a onclick="hacerAlgoConProductos('${producto.producto4}')">${producto.producto4}</a></li>`
+      listaProductosHtml += `<li><a>${producto.producto3}</a></li>`
+    }
+
+    for (const producto of stock) {
+      listaProductosHtml += `<li><a>${producto.producto4}</a></li>`
     }
 
 
@@ -122,19 +123,19 @@ function mostrarCantidadEnLocal() {
     let listaLocalHtml = '<ul>'
 
     for (const producto of stock) {
-      listaLocalHtml += `<li><a onclick="hacerAlgoConLocal('${producto.cantidadLocal1}')">${producto.cantidadLocal1}</a></li>`
+      listaLocalHtml += `<li><a>${producto.cantidadLocal1}</a></li>`
     }
 
     for (const producto of stock) {
-      listaLocalHtml += `<li><a onclick="hacerAlgoConLocal('${producto.cantidadLocal2}')">${producto.cantidadLocal2}</a></li>`
+      listaLocalHtml += `<li><a>${producto.cantidadLocal2}</a></li>`
     }
 
     for (const producto of stock) {
-      listaLocalHtml += `<li><a onclick="hacerAlgoConLocal('${producto.cantidadLocal3}')">${producto.cantidadLocal3}</a></li>`
+      listaLocalHtml += `<li><a>${producto.cantidadLocal3}</a></li>`
     }
 
     for (const producto of stock) {
-      listaLocalHtml += `<li><a onclick="hacerAlgoConLocal('${producto.cantidadLocal4}')">${producto.cantidadLocal4}</a></li>`
+      listaLocalHtml += `<li><a>${producto.cantidadLocal4}</a></li>`
     }
 
 
@@ -148,19 +149,19 @@ function mostrarIngresados() {
     let listaIngresadosHtml = '<ul>'
 
     for (const producto of stock) {
-      listaIngresadosHtml += `<li><a onclick="hacerAlgoConIngresados('${producto.productoIngresado1}')">${producto.productoIngresado1}</a></li>`
+      listaIngresadosHtml += `<li><a>${producto.productoIngresado1}</a></li>`
     }
 
     for (const producto of stock) {
-      listaIngresadosHtml += `<li><a onclick="hacerAlgoConIngresados('${producto.productoIngresado2}')">${producto.productoIngresado2}</a></li>`
+      listaIngresadosHtml += `<li><a>${producto.productoIngresado2}</a></li>`
     }
 
     for (const producto of stock) {
-      listaIngresadosHtml += `<li><a onclick="hacerAlgoConIngresados('${producto.productoIngresado3}')">${producto.productoIngresado3}</a></li>`
+      listaIngresadosHtml += `<li><a>${producto.productoIngresado3}</a></li>`
     }
 
     for (const producto of stock) {
-      listaIngresadosHtml += `<li><a onclick="hacerAlgoConIngresados('${producto.productoIngresado4}')">${producto.productoIngresado4}</a></li>`
+      listaIngresadosHtml += `<li><a>${producto.productoIngresado4}</a></li>`
     }
 
 
@@ -168,14 +169,21 @@ function mostrarIngresados() {
   }
 }
 
-function hacerAlgoConProductos(nombreProductos) {
-  alert(nombreProductos)
+function alertaEnviar () {
+  Toastify({
+    text: "Enviado",
+    duration: 3000,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top", 
+    position: "right", 
+    stopOnFocus: true, 
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    onClick: function(){} 
+  }).showToast();
 }
 
-function hacerAlgoConLocal(nombreLocal) {
-  alert(nombreLocal)
-}
 
-function hacerAlgoConIngresados(nombreproductoIngresado) {
-  alert(nombreproductoIngresado)
-}
