@@ -33,6 +33,10 @@
     color: black; text-shadow: rgba(255, 255, 255, 0.336) -0.1em 0.1em 0.5em;
 }
 
+.ingresar {
+    margin-bottom: 1rem;
+}
+
 .formulario_enviar {
     background-color: rgba(145, 169, 236, 0.151);
     padding: 2rem;
@@ -60,7 +64,7 @@
 }
 
 .input {
-    width: 20rem;
+    width: 15rem;
 }
 
 .enviar {

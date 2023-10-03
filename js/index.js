@@ -16,12 +16,18 @@ const inputCantidadIngresada1 = document.querySelector('#inputCantidadIngresada1
 const inputCantidadIngresada2 = document.querySelector('#inputCantidadIngresada2')
 const inputCantidadIngresada3 = document.querySelector('#inputCantidadIngresada3')
 const inputCantidadIngresada4 = document.querySelector('#inputCantidadIngresada4')
+const inputCantidadEntregado1 = document.querySelector('#inputCantidadEntregado1')
+const inputCantidadEntregado2 = document.querySelector('#inputCantidadEntregado2')
+const inputCantidadEntregado3 = document.querySelector('#inputCantidadEntregado3')
+const inputCantidadEntregado4 = document.querySelector('#inputCantidadEntregado4')
 const divlistaProductos = document.querySelector('#listaProductos')
 const divlistaLocal = document.querySelector('#listaLocal')
 const divListaIngresados = document.querySelector('#listaIngresados')
+const divListaEntregados = document.querySelector('#listaEntregados')
 const seccionProductos = document.querySelector('#seccionProductos')
 const seccionLocal = document.querySelector('#seccionLocal')
 const seccionIngresado = document.querySelector('#seccionIngresado')
+const seccionEntregado = document.querySelector('#seccionEntregado')
 const button = document.querySelector('#button')
  
 
@@ -31,12 +37,13 @@ const stock = JSON.parse(localStorage.getItem('stock')) || []
 mostrarProductos()
 mostrarCantidadEnLocal()
 mostrarIngresados()
+mostrarEntregados()
 
 
 // Se crea la clase producto 
 
 class Producto {
-  constructor({ producto1, producto2, producto3, producto4, cantidadLocal1, cantidadLocal2, cantidadLocal3, cantidadLocal4, productoIngresado1, productoIngresado2, productoIngresado3, productoIngresado4 }) {
+  constructor({ producto1, producto2, producto3, producto4, cantidadLocal1, cantidadLocal2, cantidadLocal3, cantidadLocal4, productoIngresado1, productoIngresado2, productoIngresado3, productoIngresado4, productoEntregado1, productoEntregado2, productoEntregado3, productoEntregado4}) {
 
     this.producto1 = producto1
     this.producto2 = producto2
@@ -50,6 +57,11 @@ class Producto {
     this.productoIngresado2 = productoIngresado2
     this.productoIngresado3 = productoIngresado3
     this.productoIngresado4 = productoIngresado4
+    this.productoEntregado1 = productoEntregado1
+    this.productoEntregado2 = productoEntregado2
+    this.productoEntregado3 = productoEntregado3
+    this.productoEntregado4 = productoEntregado4
+    
   }
 }
 
@@ -71,8 +83,13 @@ formStock.onsubmit = e => {
   const productoIngresado2 = inputCantidadIngresada2.value
   const productoIngresado3 = inputCantidadIngresada3.value
   const productoIngresado4 = inputCantidadIngresada4.value
+  const productoEntregado1 = inputCantidadEntregado1.value
+  const productoEntregado2 = inputCantidadEntregado2.value
+  const productoEntregado3 = inputCantidadEntregado3.value
+  const productoEntregado4 = inputCantidadEntregado4.value
+  
 
-  const producto = new Producto({ producto1, producto2, producto3, producto4, cantidadLocal1, cantidadLocal2, cantidadLocal3, cantidadLocal4, productoIngresado1, productoIngresado2, productoIngresado3, productoIngresado4 })
+  const producto = new Producto({ producto1, producto2, producto3, producto4, cantidadLocal1, cantidadLocal2, cantidadLocal3, cantidadLocal4, productoIngresado1, productoIngresado2, productoIngresado3, productoIngresado4, productoEntregado1, productoEntregado2, productoEntregado3, productoEntregado4 })
   
 
   guardarProducto(producto)
@@ -87,6 +104,7 @@ function guardarProducto(producto) {
   mostrarProductos()
   mostrarCantidadEnLocal()
   mostrarIngresados()
+  mostrarEntregados()
 }
 
 
@@ -117,6 +135,7 @@ function mostrarProductos() {
   }
 }
 
+
 function mostrarCantidadEnLocal() {
   if (stock.length > 0) {
     seccionLocal.style.display = 'block'
@@ -143,6 +162,7 @@ function mostrarCantidadEnLocal() {
   }
 }
 
+
 function mostrarIngresados() {
   if (stock.length > 0) {
     seccionIngresado.style.display = 'block'
@@ -168,6 +188,36 @@ function mostrarIngresados() {
     divListaIngresados.innerHTML = listaIngresadosHtml + '</ul>'
   }
 }
+
+
+function mostrarEntregados() {
+  if (stock.length > 0) {
+    seccionEntregado.style.display = 'block'
+    let listaEntregadosHtml = '<ul>'
+
+    for (const producto of stock) {
+      listaEntregadosHtml += `<li><a>${producto.productoEntregado1}</a></li>`
+    }
+
+    for (const producto of stock) {
+      listaEntregadosHtml += `<li><a>${producto.productoEntregado2}</a></li>`
+    }
+
+    for (const producto of stock) {
+      listaEntregadosHtml += `<li><a>${producto.productoEntregado3}</a></li>`
+    }
+
+    for (const producto of stock) {
+      listaEntregadosHtml += `<li><a>${producto.productoEntregado4}</a></li>`
+    }
+
+
+    divListaEntregados.innerHTML = listaEntregadosHtml + '</ul>'
+  }
+}
+
+
+
 
 function alertaEnviar () {
   Toastify({
